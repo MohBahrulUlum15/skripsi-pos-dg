@@ -16,35 +16,35 @@ class PosyanduSeeder extends Seeder
         DB::table('posyandus')->insert([
             [
                 'name' => 'Cempaka 1',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Cempaka 2',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Melati 1',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Melati 2',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Anggrek 1',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Anggrek 2',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Mawar',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
             [
                 'name' => 'Wijaya Kusuma',
-                'alamat' => '-'
+                'alamat' => 'Puskesmas Mangaran, Mangaran - Situbondo'
             ],
         ]);
 
