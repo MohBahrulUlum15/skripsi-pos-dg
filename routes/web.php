@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BidanController;
+use App\Models\Bidan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', function () {
+    Route::get('home', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('home');
+
+    Route::resource('bidan', BidanController::class);
 });
