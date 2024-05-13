@@ -45,9 +45,11 @@ class VariabelController extends Controller
      */
     public function show($id)
     {
+        $count = 1;
         $variabel = Variabel::findOrFail($id);
-
-        dd($variabel);
+        $keanggotaans = $variabel->keanggotaan;
+        // dd($variabel, $keanggotaan);
+        return view('pages.fuzzy.variabel.show', compact('count', 'variabel', 'keanggotaans'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Variabel extends Model
 {
@@ -14,4 +15,9 @@ class Variabel extends Model
         'tipe',
         'satuan'
     ];
+
+    public function keanggotaan(): HasMany
+    {
+        return $this->hasMany(Keanggotaan::class);
+    }
 }
