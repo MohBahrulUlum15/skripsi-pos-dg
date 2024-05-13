@@ -45,10 +45,7 @@ class BidanController extends Controller
         //
         $request->validate([
             'name' => 'required|string|max:255',
-            // 'email' => 'required|email|unique:users|max:255',
-            // 'password' => 'required|string|min:8',
             'phone' => 'required|numeric',
-            // 'roles' => 'required',
             'nip' => 'required|numeric',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255'

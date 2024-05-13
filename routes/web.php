@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BidanController;
 use App\Http\Controllers\OrangTuaController;
-use App\Models\Bidan;
+use App\Http\Controllers\PosyanduController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +26,6 @@ Route::middleware(['auth'])->group(function () {
     })->name('home');
 
     Route::resource('bidan', BidanController::class);
-
     Route::resource('orangtua', OrangTuaController::class);
+    Route::resource('posyandu', PosyanduController::class);
 });
