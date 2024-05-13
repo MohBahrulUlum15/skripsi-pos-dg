@@ -22,8 +22,8 @@
                         <a class="nav-link" href="{{ route('bidan.index') }}">Bidan</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">Orang Tua</a>
-                        {{-- <a class="nav-link" href="{{ route('orangtua.index') }}">Orang Tua</a> --}}
+                        {{-- <a class="nav-link" href="#">Orang Tua</a> --}}
+                        <a class="nav-link" href="{{ route('orangtua.index') }}">Orang Tua</a>
                     </li>
                 </ul>
             </li>

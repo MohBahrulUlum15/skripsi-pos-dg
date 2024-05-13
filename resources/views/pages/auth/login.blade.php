@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Login Skripsi Pos-DG')
+@section('title', 'Login')
 
 @push('style')
     <!-- CSS Libraries -->

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Bidan')
+@section('title', 'Advanced Forms')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,7 +16,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Edit Data Bidan</h1>
+                <h1>Tambah Data Orang Tua</h1>
                 {{-- <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
@@ -26,46 +26,43 @@
 
             <div class="section-body">
                 <div class="card">
-                    {{-- <form action="{{ route('bidan.store') }}" method="POST"> --}}
-                    <form action="{{ route('bidan.update', $bidan) }}" method="POST">
+                    <form action="{{ route('orangtua.store') }}" method="POST">
                         @csrf
-                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" class="form-control" name="name" value="{{ $bidan->user->name }}">
+                                <input type="text" class="form-control" name="name">
                                 @if ($errors->has('name'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
                                         {{ $errors->first('name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label>NIP</label>
-                                <input type="number" class="form-control" name="nip" value="{{ $bidan->nip }}">
-                                @if ($errors->has('nip'))
+                                <label>NIK</label>
+                                <input type="number" class="form-control" name="nik">
+                                @if ($errors->has('nik'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
-                                        {{ $errors->first('nip') }}</span>
+                                        {{ $errors->first('nik') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Lahir</label>
                                 <input type="date" class="form-control"name="tanggal_lahir"
-                                    value="{{ $bidan->tanggal_lahir }}">
+                                    value="{{ old('tanggal_lahir') }}">
                                 @if ($errors->has('tanggal_lahir'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
                                         {{ $errors->first('tanggal_lahir') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" readonly name="email"
-                                    value="{{ $bidan->user->email }}">
+                                <input type="email" class="form-control" name="email">
                                 @if ($errors->has('email'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
                                         {{ $errors->first('email') }}</span>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label>Password</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -73,7 +70,7 @@
                                             <i class="fas fa-lock"></i>
                                         </div>
                                     </div>
-                                    <input type="password" class="form-control" name="password" value="">
+                                    <input type="password" class="form-control" name="password">
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
@@ -82,8 +79,7 @@
                             </div> --}}
                             <div class="form-group">
                                 <label>No. HP</label>
-                                <input type="number" class="form-control" name="phone"
-                                    value="{{ $bidan->user->phone }}">
+                                <input type="number" class="form-control" name="phone">
                                 @if ($errors->has('phone'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
                                         {{ $errors->first('phone') }}</span>
@@ -92,7 +88,7 @@
 
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" class="form-control" name="alamat" value="{{ $bidan->alamat }}">
+                                <input type="text" class="form-control" name="alamat">
                                 @if ($errors->has('alamat'))
                                     <span class="text-danger lowercase text-sm">&nbsp;*
                                         {{ $errors->first('alamat') }}</span>
@@ -107,8 +103,8 @@
                                         <span class="selectgroup-button">Admin</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="BIDAN" class="selectgroup-input">
-                                        <span class="selectgroup-button">Bidan</span>
+                                        <input type="radio" name="roles" value="orangtua" class="selectgroup-input">
+                                        <span class="selectgroup-button">orangtua</span>
                                     </label>
                                     <label class="selectgroup-item">
                                         <input type="radio" name="roles" value="USER" class="selectgroup-input">

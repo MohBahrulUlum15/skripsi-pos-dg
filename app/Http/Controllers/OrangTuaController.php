@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bidan;
+use App\Models\OrangTua;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class BidanController extends Controller
+class OrangTuaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class BidanController extends Controller
     {
         $count = 1;
 
-        $bidans = Bidan::with('user')
+        $orangtuas = OrangTua::with('user')
             ->when($request->input('name'), function ($query, $name) {
                 return $query->whereHas('user', function ($query) use ($name) {
                     $query->where('name', 'like', '%' . $name . '%');
@@ -24,8 +24,7 @@ class BidanController extends Controller
             })
             ->paginate(5);
 
-        return view('pages.bidan.index', compact('bidans', 'count'));
-        // return view('pages.bidan.index');
+        return view('pages.orangtua.index', compact('orangtuas', 'count'));
     }
 
     /**
@@ -34,7 +33,7 @@ class BidanController extends Controller
     public function create()
     {
         //
-        return view('pages.bidan.create');
+        return view('pages.orangtua.create');
     }
 
     /**
@@ -42,14 +41,10 @@ class BidanController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'name' => 'required|string|max:255',
-            // 'email' => 'required|email|unique:users|max:255',
-            // 'password' => 'required|string|min:8',
             'phone' => 'required|numeric',
-            // 'roles' => 'required',
-            'nip' => 'required|numeric',
+            'nik' => 'required|numeric',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255'
         ]);
@@ -66,30 +61,30 @@ class BidanController extends Controller
 
         $email = strtolower($firstTwoWords) . '@gmail.com';
 
-        $createUserForBidan = User::create([
+        $createUserForOrangTua = User::create([
             'name' => $request->name,
             'email' => $email,
             'password' => Hash::make('password'),
             'phone' => $request->phone,
-            'roles' => 'nakes',
+            'roles' => 'user',
         ]);
 
-        $bidan = Bidan::create([
-            'user_id' => $createUserForBidan->id,
-            'nip' => $request->nip,
+        $orangtua = OrangTua::create([
+            'user_id' => $createUserForOrangTua->id,
+            'nik' => $request->nik,
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat' => $request->alamat
         ]);
 
-        // dd($bidan);
+        // dd($OrangTua);
 
-        return redirect()->route('bidan.index');
+        return redirect()->route('orangtua.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Bidan $bidan)
+    public function show(OrangTua $orangTua)
     {
         //
     }
@@ -99,8 +94,8 @@ class BidanController extends Controller
      */
     public function edit($id)
     {
-        $bidan = Bidan::findOrFail($id);
-        return view('pages.bidan.edit', compact('bidan'));
+        $orangtua = OrangTua::findOrFail($id);
+        return view('pages.orangtua.edit', compact('orangtua'));
     }
 
     /**
@@ -111,13 +106,13 @@ class BidanController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|numeric',
-            'nip' => 'required|numeric',
+            'nik' => 'required|numeric',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255'
         ]);
 
         $data = $request->all();
-        $bidan = Bidan::findOrFail($id);
+        $orangtua = OrangTua::findOrFail($id);
 
         $words = explode(' ', $request->name);
 
@@ -131,12 +126,12 @@ class BidanController extends Controller
 
         $email = strtolower($firstTwoWords) . '@gmail.com';
 
-        $bidan->update($data);
-        $bidan->user->update($data);
-        $bidan->user->update([
+        $orangtua->update($data);
+        $orangtua->user->update($data);
+        $orangtua->user->update([
             'email' => $email,
         ]);
-        return redirect()->route('bidan.index')->with('message', 'Data berhasil diupdate');
+        return redirect()->route('orangtua.index')->with('message', 'Data berhasil diupdate');
     }
 
     /**
@@ -144,9 +139,9 @@ class BidanController extends Controller
      */
     public function destroy($id)
     {
-        $bidan = Bidan::findOrFail($id);
-        $bidan->user->delete();
-        $bidan->delete();
-        return redirect()->route('bidan.index');
+        $orangtua = OrangTua::findOrFail($id);
+        $orangtua->user->delete();
+        $orangtua->delete();
+        return redirect()->route('orangtua.index');
     }
 }

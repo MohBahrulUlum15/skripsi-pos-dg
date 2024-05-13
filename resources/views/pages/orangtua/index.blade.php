@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bidan')
+@section('title', 'Orang Tua')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,14 +11,14 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Data Bidan</h1>
+                <h1>Data Orang Tua</h1>
                 <div class="section-header-button">
-                    <a href="{{ route('bidan.create') }}" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('orangtua.create') }}" class="btn btn-primary">Add New</a>
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Bidan</a></div>
-                    <div class="breadcrumb-item">Data Bidan</div>
+                    <div class="breadcrumb-item"><a href="#">Orang Tua</a></div>
+                    <div class="breadcrumb-item">Data Orang Tua</div>
                 </div>
             </div>
             <div class="section-body">
@@ -27,11 +27,11 @@
                     <div class="col-12">
                         <div class="card">
                             {{-- <div class="card-header">
-                                <h4>Data Bidan</h4>
+                                <h4>Data Orang Tua</h4>
                             </div> --}}
                             <div class="card-body">
                                 <div class="float-right">
-                                    <form method="GET" action="{{ route('bidan.index') }}">
+                                    <form method="GET" action="{{ route('orangtua.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Cari" name="name">
                                             <div class="input-group-append">
@@ -49,50 +49,50 @@
                                                 #
                                             </th>
                                             <th>Nama</th>
-                                            <th>NIP</th>
+                                            <th>NIK</th>
                                             <th>Email</th>
                                             <th>No Telepon</th>
                                             <th>Alamat</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($bidans as $bidan)
+                                        @foreach ($orangtuas as $orangtua)
                                             <tr>
                                                 <th scope="row">{{ $count++ }}</th>
                                                 <td>
-                                                    {{ $bidan->user->name }}
+                                                    {{ $orangtua->user->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $bidan->nip }}
+                                                    {{ $orangtua->nik }}
                                                 </td>
                                                 <td>
-                                                    {{ $bidan->user->email }}
+                                                    {{ $orangtua->user->email }}
                                                 </td>
                                                 <td>
-                                                    {{ $bidan->user->phone }}
+                                                    {{ $orangtua->user->phone }}
                                                 </td>
                                                 <td>
-                                                    {{ $bidan->alamat }}
+                                                    {{ $orangtua->alamat }}
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content">
 
-                                                        {{-- <a href="{{ route('bidan.show', $bidan->id) }}"
+                                                        {{-- <a href="{{ route('orangtua.show', $orangtua->id) }}"
                                                             class="btn btn-sm btn-primary btn-icon">
                                                             <i class="fas fa-eye"></i>
                                                             Show
                                                         </a> --}}
 
-                                                        <a href='{{ route('bidan.edit', $bidan->id) }}' class="btn btn-sm btn-info btn-icon ml-2">
+                                                        <a href='{{ route('orangtua.edit', $orangtua->id) }}' class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
-                                                        {{-- <a href='{{ route('bidan.edit', $bidan->id) }}'
+                                                        {{-- <a href='{{ route('orangtua.edit', $orangtua->id) }}'
                                                             class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a> --}}
 
-                                                        <form action="{{ route('bidan.destroy', $bidan->id) }}"
+                                                        <form action="{{ route('orangtua.destroy', $orangtua->id) }}"
                                                             method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -111,7 +111,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $bidans->withQueryString()->links() }}
+                                    {{ $orangtuas->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>
