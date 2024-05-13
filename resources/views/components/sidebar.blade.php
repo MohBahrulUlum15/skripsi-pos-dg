@@ -45,8 +45,8 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-file-alt"></i><span>Fuzzy</span></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a class="nav-link" href="#">Variabel</a>
-                        {{-- <a class="nav-link" href="{{ route('variabel.index') }}">Variabel</a> --}}
+                        {{-- <a class="nav-link" href="#">Variabel</a> --}}
+                        <a class="nav-link" href="{{ route('variabel.index') }}">Variabel</a>
                     </li>
                     <li>
                         <a class="nav-link" href="#">Aturan</a>
