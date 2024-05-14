@@ -58,6 +58,7 @@ class KeanggotaanSeeder extends Seeder
                 'ba_p' => 60,
                 'variabel_id' => 1,
             ],
+
             //Keanggotaan Berat Badan -> id_var = 2
             [
                 'nama_keanggotaan' => 'Sangat Kurang',
@@ -113,6 +114,52 @@ class KeanggotaanSeeder extends Seeder
                 'bt_p' => 25,
                 'ba_p' => 28,
                 'variabel_id' => 2,
+            ],
+
+            //Keanggotaan Tinggi Badan -> id_var = 3
+            [
+                'nama_keanggotaan' => 'Sangat Pendek',
+                'nama_fungsi' => 'Linear Turun',
+                'bb_l' => 44,
+                'bt_l' => 48,
+                'ba_l' => 56,
+                'bb_p' => 43,
+                'bt_p' => 47,
+                'ba_p' => 55,
+                'variabel_id' => 3,
+            ],
+            [
+                'nama_keanggotaan' => 'Pendek',
+                'nama_fungsi' => 'Segitiga',
+                'bb_l' => 48,
+                'bt_l' => 65,
+                'ba_l' => 80,
+                'bb_p' => 47,
+                'bt_p' => 64,
+                'ba_p' => 78,
+                'variabel_id' => 3,
+            ],
+            [
+                'nama_keanggotaan' => 'Normal',
+                'nama_fungsi' => 'Segitiga',
+                'bb_l' => 66,
+                'bt_l' => 94,
+                'ba_l' => 126,
+                'bb_p' => 64,
+                'bt_p' => 92,
+                'ba_p' => 124,
+                'variabel_id' => 3,
+            ],
+            [
+                'nama_keanggotaan' => 'Tinggi',
+                'nama_fungsi' => 'Linear Naik',
+                'bb_l' => 110,
+                'bt_l' => 126,
+                'ba_l' => 130,
+                'bb_p' => 108,
+                'bt_p' => 124,
+                'ba_p' => 130,
+                'variabel_id' => 3,
             ]
         ]);
     }
