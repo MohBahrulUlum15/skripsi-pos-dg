@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function bidan(): HasOne{
         return $this->hasOne(Bidan::class);
     }
+
+    public function orangtua(): HasOne{
+        return $this->hasOne(OrangTua::class);
+    }
 }
