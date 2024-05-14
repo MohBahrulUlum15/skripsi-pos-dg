@@ -20,7 +20,7 @@ class BalitaSeeder extends Seeder
                 'jenis_kelamin' => 'L',
                 'bb_lahir' => 3.8,
                 'tb_lahir' => 48,
-                'orangtua_id' => 1,
+                'orang_tua_id' => 1,
                 'posyandu_id' => 1,
             ],
             [
@@ -30,7 +30,7 @@ class BalitaSeeder extends Seeder
                 'jenis_kelamin' => 'P',
                 'bb_lahir' => 3.6,
                 'tb_lahir' => 44,
-                'orangtua_id' => 1,
+                'orang_tua_id' => 1,
                 'posyandu_id' => 1,
             ],
         ]);

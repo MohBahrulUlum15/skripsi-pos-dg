@@ -86,7 +86,11 @@ class OrangTuaController extends Controller
      */
     public function show($id)
     {
-        //
+        $count = 1;
+        $orangtua = OrangTua::findOrFail($id);
+        $balitas = $orangtua->balita;
+        // dd($orangtua, $balitas);
+        return view('pages.orangtua.show', compact('count', 'orangtua', 'balitas'));
     }
 
     /**

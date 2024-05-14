@@ -16,7 +16,7 @@ class Balita extends Model
         'jenis_kelamin',
         'bb_lahir',
         'tb_lahir',
-        'orangtua_id',
+        'orang_tua_id',
         'posyandu_id',
     ];
 
