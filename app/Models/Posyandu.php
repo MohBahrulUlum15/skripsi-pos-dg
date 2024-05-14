@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Posyandu extends Model
 {
@@ -13,4 +14,8 @@ class Posyandu extends Model
         'name',
         'alamat'
     ];
+
+    public function balita(): HasMany{
+        return $this->hasMany(Balita::class);
+    }
 }
