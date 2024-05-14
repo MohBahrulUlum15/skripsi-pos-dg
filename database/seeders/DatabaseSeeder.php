@@ -16,18 +16,21 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Administrator',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('password'),
-            'phone' => '089516295079',
-            'roles' => 'admin'
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Administrator',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => Hash::make('password'),
+        //     'phone' => '089516295079',
+        //     'roles' => 'admin'
+        // ]);
 
         $this->call([
+            UserSeeder::class,
+            BidanSeeder::class,
+            OrangTuaSeeder::class,
+            PosyanduSeeder::class,
             VariabelSeeder::class,
             KeanggotaanSeeder::class,
-            PosyanduSeeder::class,
         ]);
     }
 }

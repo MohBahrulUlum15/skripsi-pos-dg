@@ -84,7 +84,7 @@ class OrangTuaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrangTua $orangTua)
+    public function show($id)
     {
         //
     }

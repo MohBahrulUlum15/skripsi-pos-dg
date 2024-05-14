@@ -18,9 +18,13 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['L', 'P',]);
             $table->float('bb_lahir');
             $table->float('tb_lahir');
-            $table->foreignId('orangtua_id')->constrained('orangtuas')->onDelete('cascade');
-            $table->foreignId('posyandu_id')->constrained('posyandus')->onDelete('cascade');
+            $table->unsignedBigInteger('orangtua_id');
+            $table->unsignedBigInteger('posyandu_id');
             $table->timestamps();
+
+            // Definisikan foreign key constraint
+            $table->foreign('orangtua_id')->references('id')->on('orang_tuas')->onDelete('cascade');
+            $table->foreign('posyandu_id')->references('id')->on('posyandus')->onDelete('cascade');
         });
     }
 
