@@ -26,7 +26,6 @@
 
             <div class="section-body">
                 <div class="card">
-                    {{-- <form action="{{ route('orangtua.store') }}" method="POST"> --}}
                     <form action="{{ route('orangtua.update', $orangtua) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -66,21 +65,6 @@
                                         {{ $errors->first('email') }}</span>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Password</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-lock"></i>
-                                        </div>
-                                    </div>
-                                    <input type="password" class="form-control" name="password" value="">
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="text-danger lowercase text-sm">&nbsp;*
-                                        {{ $errors->first('password') }}</span>
-                                @endif
-                            </div> --}}
                             <div class="form-group">
                                 <label>No. HP</label>
                                 <input type="number" class="form-control" name="phone"
@@ -99,24 +83,6 @@
                                         {{ $errors->first('alamat') }}</span>
                                 @endif
                             </div>
-                            {{-- <div class="form-group">
-                                <label class="form-label">Roles</label>
-                                <div class="selectgroup w-100">
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
-                                            checked="">
-                                        <span class="selectgroup-button">Admin</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="orangtua" class="selectgroup-input">
-                                        <span class="selectgroup-button">orangtua</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="USER" class="selectgroup-input">
-                                        <span class="selectgroup-button">User</span>
-                                    </label>
-                                </div>
-                            </div> --}}
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>

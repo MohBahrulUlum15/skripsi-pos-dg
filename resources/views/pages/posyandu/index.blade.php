@@ -23,7 +23,7 @@
             </div>
 
             @if (Session::has('message'))
-                <div class="alert alert-success alert-dismissible show fade">
+                <div class="alert alert-light alert-dismissible show fade">
                     <div class="alert-body">
                         <button class="close" data-dismiss="alert">
                             <span>&times;</span>

@@ -32,15 +32,6 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label class="form-label">Nama Orang Tua</label>
-                                {{-- <select class="form-control selectric @error('variabel_id') is-invalid @enderror"
-                                    name="variabel_id">
-                                    <option value="">-- Pilih Variabel --</option>
-                                    @foreach ($variabels as $variabel)
-                                        <option value="{{ $variabel->id }}"
-                                            {{ old('variabel_id') == $variabel->id ? 'selected' : '' }}>
-                                            {{ $variabel->name }}</option>
-                                    @endforeach
-                                </select> --}}
                                 <input type="hidden" value="{{$orangtua->id}}" name="orang_tua_id">
                                 <input type="text" value="{{$orangtua->user->name}}" class="form-control" readonly>
                             </div>

@@ -22,7 +22,7 @@ class BidanController extends Controller
                     $query->where('name', 'like', '%' . $name . '%');
                 });
             })
-            ->paginate(10);
+            ->paginate(5);
 
         return view('pages.bidan.index', compact('bidans', 'count'));
         // return view('pages.bidan.index');

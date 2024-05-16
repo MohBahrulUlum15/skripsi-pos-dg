@@ -21,6 +21,18 @@
                     <div class="breadcrumb-item">Data Bidan</div>
                 </div>
             </div>
+
+            @if (Session::has('message'))
+                <div class="alert alert-light alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        {{ Session::get('message') }}
+                    </div>
+                </div>
+            @endif
+
             <div class="section-body">
 
                 <div class="row mt-4">
