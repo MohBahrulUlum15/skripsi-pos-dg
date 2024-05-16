@@ -21,6 +21,18 @@
                     <div class="breadcrumb-item">Data Posyandu</div>
                 </div>
             </div>
+
+            @if (Session::has('message'))
+                <div class="alert alert-success alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        {{ Session::get('message') }}
+                    </div>
+                </div>
+            @endif
+
             <div class="section-body">
 
                 <div class="row mt-4">
@@ -70,7 +82,8 @@
                                                             Show
                                                         </a> --}}
 
-                                                        <a href='{{ route('posyandu.edit', $posyandu->id) }}' class="btn btn-sm btn-info btn-icon ml-2">
+                                                        <a href='{{ route('posyandu.edit', $posyandu->id) }}'
+                                                            class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         {{-- <a href='{{ route('posyandu.edit', $posyandu->id) }}'

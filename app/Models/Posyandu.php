@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Posyandu extends Model
@@ -13,10 +14,14 @@ class Posyandu extends Model
     protected $fillable = [
         'name',
         'alamat',
-        'posyandu_id'
+        'bidan_id'
     ];
 
     public function balita(): HasMany{
         return $this->hasMany(Balita::class);
+    }
+
+    public function bidans(): BelongsToMany{
+        return $this->belongsToMany(Bidan::class, 'posyandu_bidan');
     }
 }

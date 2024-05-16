@@ -99,6 +99,18 @@
                                         {{ $errors->first('alamat') }}</span>
                                 @endif
                             </div>
+
+                            <div class="form-group">
+                                <label>Bidan</label>
+                                <select class="form-control select2" multiple="multiple" id="bidan_id" name="bidan_id[]">
+                                    @foreach ($bidans as $bidan)
+                                        <option value="{{ $bidan->id }}"
+                                            {{ in_array($bidan->id, $selectedBidans) ? 'selected' : '' }}>
+                                            {{ $bidan->user->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                             {{-- <div class="form-group">
                                 <label class="form-label">Roles</label>
                                 <div class="selectgroup w-100">
@@ -131,4 +143,5 @@
 
 @push('scripts')
     <script src="{{ asset('library/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('library/select2/dist/js/select2.full.min.js') }}"></script>
 @endpush

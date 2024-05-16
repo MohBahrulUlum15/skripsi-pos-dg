@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bidan;
 use App\Models\Posyandu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,8 @@ class PosyanduController extends Controller
      */
     public function create()
     {
-        return view('pages.posyandu.create');
+        $bidans = Bidan::all();
+        return view('pages.posyandu.create', compact('bidans'));
     }
 
     /**
@@ -37,17 +39,21 @@ class PosyanduController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255'
+            'alamat' => 'required|string|max:255',
+            'bidan_id' => 'required|array',
+            'bidan_id.*' => 'exists:bidans,id',
         ]);
 
         $posyandu = Posyandu::create([
-            'name' => $request->name,
-            'alamat' => $request->alamat
+            'name' => $validatedData['name'],
+            'alamat' => $validatedData['alamat'],
         ]);
 
-        return redirect()->route('posyandu.index');
+        $posyandu->bidans()->sync($validatedData['bidan_id']);
+
+        return redirect()->route('posyandu.index')->with('message', 'Posyandu created successfully.');
     }
 
     /**
@@ -64,7 +70,9 @@ class PosyanduController extends Controller
     public function edit($id)
     {
         $posyandu = Posyandu::findOrFail($id);
-        return view('pages.posyandu.edit', compact('posyandu'));
+        $bidans = Bidan::all();
+        $selectedBidans = $posyandu->bidans->pluck('id')->toArray();
+        return view('pages.posyandu.edit', compact('posyandu', 'bidans', 'selectedBidans'));
     }
 
     /**
@@ -72,15 +80,22 @@ class PosyanduController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'alamat' => 'required|string|max:255'
+            'alamat' => 'required|string|max:255',
+            'bidan_id' => 'required|array',
+            'bidan_id.*' => 'exists:bidans,id',
         ]);
 
-        $data = $request->all();
         $posyandu = Posyandu::findOrFail($id);
 
-        $posyandu->update($data);
+        $posyandu->update([
+            'name' => $validatedData['name'],
+            'alamat' =>$validatedData['alamat'],
+        ]);
+
+        $posyandu->bidans()->sync($validatedData['bidan_id']);
+
         return redirect()->route('posyandu.index')->with('message', 'Data berhasil diupdate');
     }
 
@@ -89,8 +104,14 @@ class PosyanduController extends Controller
      */
     public function destroy($id)
     {
+        // $posyandu = Posyandu::findOrFail($id);
+        // $posyandu->delete();
+        // return redirect()->route('posyandu.index');
+
         $posyandu = Posyandu::findOrFail($id);
+        $posyandu->bidans()->detach(); // Jika ada relasi many-to-many
         $posyandu->delete();
-        return redirect()->route('posyandu.index');
+
+        return redirect()->route('posyandu.index')->with('message', 'Posyandu deleted successfully.');
     }
 }
