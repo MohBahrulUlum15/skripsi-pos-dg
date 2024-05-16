@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\BidanController;
 use App\Http\Controllers\OrangTuaController;
 use App\Http\Controllers\PosyanduController;
@@ -27,7 +28,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('home');
 
     Route::resource('bidan', BidanController::class);
+
     Route::resource('orangtua', OrangTuaController::class);
+    Route::get('orangtua/{id}/create-balita', [OrangTuaController::class, 'createBalita'])->name('catatan-kelahiran.create');
+
     Route::resource('posyandu', PosyanduController::class);
+
+    Route::resource('balita', BalitaController::class);
+
     Route::resource('variabel', VariabelController::class);
 });

@@ -50,7 +50,7 @@
                                             </th>
                                             <th>Nama</th>
                                             <th>NIK</th>
-                                            <th>Email</th>
+                                            {{-- <th>Email</th> --}}
                                             <th>No Telepon</th>
                                             <th>Alamat</th>
                                             <th>Action</th>
@@ -61,9 +61,9 @@
                                                 <td>
                                                     {{ $orangtua->user->name }}
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     {{ $orangtua->nik }}
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     {{ $orangtua->user->email }}
                                                 </td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrangTua;
+use App\Models\Posyandu;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -147,5 +148,12 @@ class OrangTuaController extends Controller
         $orangtua->user->delete();
         $orangtua->delete();
         return redirect()->route('orangtua.index');
+    }
+
+    public function createBalita($id)
+    {
+        $orangtua = OrangTua::where('id', $id)->first();
+        $posyandu = Posyandu::all();
+        return view('pages.balita.create', compact('id', 'orangtua', 'posyandu'));
     }
 }

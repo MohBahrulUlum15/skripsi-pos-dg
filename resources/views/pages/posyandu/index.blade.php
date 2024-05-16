@@ -72,7 +72,6 @@
 
                                                         <a href='{{ route('posyandu.edit', $posyandu->id) }}' class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
-                                                            Edit
                                                         </a>
                                                         {{-- <a href='{{ route('posyandu.edit', $posyandu->id) }}'
                                                             class="btn btn-sm btn-info btn-icon ml-2">
@@ -87,7 +86,7 @@
                                                                 value="{{ csrf_token() }}" />
                                                             <button class="btn btn-sm btn-danger btn-icon confirm-delete"
                                                                 onclick="return confirm('Hapus data?')">
-                                                                <i class="fas fa-times"></i> Delete
+                                                                <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
                                                     </div>

@@ -12,7 +12,8 @@ class Posyandu extends Model
 
     protected $fillable = [
         'name',
-        'alamat'
+        'alamat',
+        'posyandu_id'
     ];
 
     public function balita(): HasMany{

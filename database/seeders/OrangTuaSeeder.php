@@ -16,7 +16,7 @@ class OrangTuaSeeder extends Seeder
         DB::table('orang_tuas')->insert([
             [
                 'id' => 1,
-                'user_id' => 3,
+                'user_id' => 12,
                 'nik' => '3512094501770001',
                 'tanggal_lahir' => '1977-05-01',
                 'alamat' => 'Mangaran -Situbondo',

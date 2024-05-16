@@ -50,7 +50,7 @@
                                             </th>
                                             <th>Nama</th>
                                             <th>NIP</th>
-                                            <th>Email</th>
+                                            {{-- <th>Email</th> --}}
                                             <th>No Telepon</th>
                                             <th>Alamat</th>
                                             <th>Action</th>
@@ -64,9 +64,9 @@
                                                 <td>
                                                     {{ $bidan->nip }}
                                                 </td>
-                                                <td>
+                                                {{-- <td>
                                                     {{ $bidan->user->email }}
-                                                </td>
+                                                </td> --}}
                                                 <td>
                                                     {{ $bidan->user->phone }}
                                                 </td>
@@ -82,9 +82,9 @@
                                                             Show
                                                         </a> --}}
 
-                                                        <a href='{{ route('bidan.edit', $bidan->id) }}' class="btn btn-sm btn-info btn-icon ml-2">
+                                                        <a href='{{ route('bidan.edit', $bidan->id) }}'
+                                                            class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
-                                                            Edit
                                                         </a>
                                                         {{-- <a href='{{ route('bidan.edit', $bidan->id) }}'
                                                             class="btn btn-sm btn-info btn-icon ml-2">
@@ -99,7 +99,7 @@
                                                                 value="{{ csrf_token() }}" />
                                                             <button class="btn btn-sm btn-danger btn-icon confirm-delete"
                                                                 onclick="return confirm('Hapus data?')">
-                                                                <i class="fas fa-times"></i> Delete
+                                                                <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
                                                     </div>

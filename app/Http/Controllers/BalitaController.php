@@ -28,7 +28,21 @@ class BalitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required',
+            'bb_lahir' => 'required',
+            'tb_lahir' => 'required',
+            'orang_tua_id' => 'required',
+            'posyandu_id' => 'required',
+        ]);
+
+        $data = $request->all();
+        // dd($data);
+
+        Balita::create($data);
+        return redirect()->route('orangtua.show', $request->orang_tua_id)->with('message', 'Data berhasil ditambahkan');
     }
 
     /**

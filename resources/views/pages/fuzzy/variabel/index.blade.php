@@ -71,7 +71,6 @@
                                                         <a href="{{ route('variabel.show', $variabel->id) }}"
                                                             class="btn btn-sm btn-primary btn-icon">
                                                             <i class="fas fa-eye"></i>
-                                                            Show
                                                         </a>
 
                                                         {{-- <a href='{{ route('variabel.edit', $variabel->id) }}' class="btn btn-sm btn-info btn-icon ml-2">

@@ -22,6 +22,17 @@
                     <div class="breadcrumb-item">Detail Orang Tua</div>
                 </div>
             </div>
+
+            @if (Session::has('message'))
+                <div class="alert alert-success alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        {{ Session::get('message') }}
+                    </div>
+                </div>
+            @endif
             <div class="section-body">
 
                 <div class="row mt-4">
@@ -30,6 +41,22 @@
                             <div class="card-body">
                                 <div class="float-left">
                                     <h5 class="text-primary">Data Balita | Orang Tua: {{ $orangtua->user->name }}</h5>
+                                </div>
+                                <div class="float-right">
+                                    {{-- <form method="GET" action="{{ route('orangtua.index') }}">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Cari" name="name">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form> --}}
+
+                                    <div class="section-header-button">
+                                        <a href="{{ route('catatan-kelahiran.create', $orangtua->id) }}"
+                                            class="btn btn-primary">Tambah
+                                            Balita</a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -47,7 +74,7 @@
                                         <th>BB Lahir</th>
                                         <th>TB Lahir</th>
                                         <th>Nama Posyandu</th>
-                                        {{-- <th>Aksi</th> --}}
+                                        <th>Aksi</th>
                                     </tr>
                                     @foreach ($balitas as $balita)
                                         <tr>
@@ -76,26 +103,24 @@
                                             <td>
                                                 {{ $balita->ba_p }}
                                             </td> --}}
-                                            {{-- <td>
+                                            <td>
                                                 <div class="d-flex justify-content">
                                                     <a href='{{ route('balita.edit', $balita->id) }}'
                                                         class="btn btn-sm btn-info btn-icon">
                                                         <i class="fas fa-edit"></i>
-                                                        Edit
                                                     </a>
 
                                                     <form action="{{ route('balita.destroy', $balita->id) }}"
                                                         method="POST" class="ml-2">
                                                         <input type="hidden" name="_method" value="DELETE" />
-                                                        <input type="hidden" name="_token"
-                                                            value="{{ csrf_token() }}" />
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                         <button class="btn btn-sm btn-danger btn-icon confirm-delete"
                                                             onclick="return confirm('Hapus data?')">
-                                                            <i class="fas fa-times"></i> Delete
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
                                                 </div>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
 
