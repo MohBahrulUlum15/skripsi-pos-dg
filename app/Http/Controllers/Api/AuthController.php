@@ -36,6 +36,15 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
+        if ($user->roles === 'admin') {
+            return response()->json([
+                'success' => true,
+                'message' => 'Login success',
+                'data' => $user,
+                'token' => $token
+            ]);
+        }
+
         // Menentukan data tambahan berdasarkan role
         if ($user->roles == "nakes") {
             $additionalData = [
@@ -56,6 +65,17 @@ class AuthController extends Controller
             'message' => 'Login success',
             'data' => new UserResource($user, $additionalData),
             'token' => $token
+        ]);
+    }
+
+    //logout
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout successfully'
         ]);
     }
 }
