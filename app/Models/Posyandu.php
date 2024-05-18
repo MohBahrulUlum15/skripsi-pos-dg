@@ -24,4 +24,8 @@ class Posyandu extends Model
     public function bidans(): BelongsToMany{
         return $this->belongsToMany(Bidan::class, 'posyandu_bidan');
     }
+
+    public function jadwal(): HasMany{
+        return $this->hasMany(Jadwal::class);
+    }
 }

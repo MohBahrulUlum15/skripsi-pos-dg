@@ -28,14 +28,15 @@
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-file-alt"></i><span>Lain-lain</span></a>
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-file-alt"></i><span>Lain-lain</span></a>
                 <ul class="dropdown-menu">
                     <li>
                         {{-- <a class="nav-link" href="#">Posyandu</a> --}}
                         <a class="nav-link" href="{{ route('posyandu.index') }}">Posyandu</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">Jadwal Pemeriksaan</a>
+                        <a class="nav-link" href={{ route('jadwal.index') }}>Jadwal Pemeriksaan</a>
                         {{-- <a class="nav-link" href="{{ route('orangtua.index') }}">Orang Tua</a> --}}
                     </li>
                 </ul>

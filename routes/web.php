@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\BidanController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\OrangTuaController;
 use App\Http\Controllers\PosyanduController;
 use App\Http\Controllers\VariabelController;
@@ -33,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orangtua/{id}/create-balita', [OrangTuaController::class, 'createBalita'])->name('catatan-kelahiran.create');
 
     Route::resource('posyandu', PosyanduController::class);
+
+    Route::resource('jadwal', JadwalController::class);
 
     Route::resource('balita', BalitaController::class);
 
