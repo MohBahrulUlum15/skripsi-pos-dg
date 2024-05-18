@@ -23,7 +23,7 @@
             </div>
 
             @if (Session::has('message'))
-                <div class="alert alert-light alert-dismissible show fade">
+                <div class="alert alert-success alert-dismissible show fade">
                     <div class="alert-body">
                         <button class="close" data-dismiss="alert">
                             <span>&times;</span>
@@ -33,14 +33,21 @@
                 </div>
             @endif
 
-            <div class="section-body">
+            {{-- @if (Session::has('error'))
+                <div class="alert alert-danger alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>&times;</span>
+                        </button>
+                        {{ Session::get('error') }}
+                    </div>
+                </div>
+            @endif --}}
 
+            <div class="section-body">
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
-                            {{-- <div class="card-header">
-                                <h4>Data jadwal</h4>
-                            </div> --}}
                             <div class="card-body">
                                 <div class="float-right">
                                     <form method="GET" action="{{ route('jadwal.index') }}">
@@ -57,46 +64,26 @@
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <tr>
-                                            <th class="text-center">
-                                                #
-                                            </th>
+                                            <th class="text-center">#</th>
                                             <th>Nama Posyandu</th>
                                             <th>Tanggal</th>
                                             <th>Action</th>
                                         </tr>
                                         @foreach ($jadwals as $jadwal)
                                             <tr>
-                                                <th scope="row">{{ $count++ }}</th>
-                                                <td>
-                                                    {{ $jadwal->posyandu->name }}
-                                                </td>
-                                                <td>
-                                                    {{ $jadwal->tanggal }}
-                                                </td>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $jadwal->posyandu->name }}</td>
+                                                <td>{{ $jadwal->tanggal }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content">
-
-                                                        {{-- <a href="{{ route('jadwal.show', $jadwal->id) }}"
-                                                            class="btn btn-sm btn-primary btn-icon">
-                                                            <i class="fas fa-eye"></i>
-                                                            Show
-                                                        </a> --}}
-
                                                         <a href='{{ route('jadwal.edit', $jadwal->id) }}'
                                                             class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        {{-- <a href='{{ route('jadwal.edit', $jadwal->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon ml-2">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a> --}}
-
                                                         <form action="{{ route('jadwal.destroy', $jadwal->id) }}"
                                                             method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
+                                                            @csrf
+                                                            @method('DELETE')
                                                             <button class="btn btn-sm btn-danger btn-icon confirm-delete"
                                                                 onclick="return confirm('Hapus data?')">
                                                                 <i class="fas fa-trash"></i>
@@ -106,8 +93,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-
-
                                     </table>
                                 </div>
                                 <div class="float-right">
