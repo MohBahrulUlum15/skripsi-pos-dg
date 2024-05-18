@@ -113,9 +113,24 @@ class UserSeeder extends Seeder
                 'name' => 'Halima',
                 'email' => 'halima@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089xxxxxxxxx',
+                'phone' => '089xxxxxxx1',
                 'roles' => 'user'
             ],
         ]);
+
+        // Generate 29 additional user data
+        $users = [];
+        for ($i = 13; $i <= 41; $i++) {
+            $users[] = [
+                'id' => $i,
+                'name' => 'User ' . $i,
+                'email' => 'user' . $i . '@gmail.com',
+                'password' => Hash::make('password'),
+                'phone' => '089' . str_pad($i, 9, '0', STR_PAD_LEFT),
+                'roles' => 'user'
+            ];
+        }
+
+        DB::table('users')->insert($users);
     }
 }

@@ -19,8 +19,22 @@ class OrangTuaSeeder extends Seeder
                 'user_id' => 12,
                 'nik' => '3512094501770001',
                 'tanggal_lahir' => '1977-05-01',
-                'alamat' => 'Mangaran -Situbondo',
+                'alamat' => 'Mangaran - Situbondo',
             ],
         ]);
+
+        // Generate 29 additional orang tua data
+        $orangTuas = [];
+        for ($i = 2; $i <= 30; $i++) {
+            $orangTuas[] = [
+                'id' => $i,
+                'user_id' => $i + 11,
+                'nik' => '351209450177' . str_pad($i, 4, '0', STR_PAD_LEFT),
+                'tanggal_lahir' => now()->subYears(30 + $i)->format('Y-m-d'),
+                'alamat' => 'Alamat ' . $i,
+            ];
+        }
+
+        DB::table('orang_tuas')->insert($orangTuas);
     }
 }
