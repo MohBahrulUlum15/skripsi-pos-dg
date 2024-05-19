@@ -26,7 +26,7 @@ class JadwalController extends Controller
                     $query->where('name', 'like', '%' . $name . '%');
                 });
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('pages.jadwalpemeriksaan.index', compact('jadwals', 'count'));
     }

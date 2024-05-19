@@ -20,7 +20,7 @@ class PosyanduController extends Controller
             ->when($request->input('name'), function ($query, $name) {
                 return $query->where('name', 'like', '%' . $name . '%');
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('pages.posyandu.index', compact('posyandus', 'count'));
     }
