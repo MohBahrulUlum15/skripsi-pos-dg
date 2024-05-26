@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BalitaController;
 use App\Http\Controllers\Api\JadwalController;
+use App\Http\Controllers\Api\PemeriksaanController;
+use App\Http\Controllers\Api\PosyanduController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +28,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 // Route::apiResource('/jadwals', JadwalController::class);
 
-Route::middleware('auth:sanctum')->group(function (){
-    Route::get('/balita', [BalitaController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/balitas', [BalitaController::class, 'index']);
 
-    Route::apiResource('/jadwals', JadwalController::class);
+    Route::get('/jadwals', [JadwalController::class, 'index']);
+    Route::get('/jadwals/{jadwal_id}', [JadwalController::class, 'getListPemeriksaanByJadwal']);
+
+    //post pemeriksaan
+    Route::post('/post-pemeriksaan', [PemeriksaanController::class, 'postPemeriksaan']);
+
+    //get all posyandu
+    Route::get('/posyandu-by-bidan', [PosyanduController::class, 'getPosyanduByBidan']);
 });
