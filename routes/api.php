@@ -30,6 +30,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/balitas', [BalitaController::class, 'index']);
+    Route::get('/balitas/{balita_id}', [BalitaController::class, 'getDetailBalita']);
 
     Route::get('/jadwals', [JadwalController::class, 'index']);
     Route::get('/jadwals/{jadwal_id}', [JadwalController::class, 'getListPemeriksaanByJadwal']);
@@ -39,4 +40,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //get all posyandu
     Route::get('/posyandu-by-bidan', [PosyanduController::class, 'getPosyanduByBidan']);
+    //get all balita by posyandu
+    Route::get('/posyandu/{posyandu_id}', [PosyanduController::class, 'getListBalitaInPosyandu']);
 });

@@ -66,4 +66,47 @@ class BalitaController extends Controller
     {
         //
     }
+
+    public function getDetailBalita(Request $request, $balita_id)
+    {
+        $balitaData = Balita::with('orangtua', 'posyandu', 'pemeriksaan')->find($balita_id);
+
+        //get all pemeriksaan data by balita_id where status = 'sudah
+        $pemeriksaan = $balitaData->pemeriksaan->where('status', 'sudah');
+
+        if (!$balitaData) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Balita tidak ditemukan',
+            ], 404);
+        }
+
+        $formattedDataBalita = [
+            'id' => $balitaData->id,
+            'name' => $balitaData->name,
+            'tanggal_lahir' => $balitaData->tanggal_lahir,
+            'jenis_kelamin' => $balitaData->jenis_kelamin,
+            'bb_lahir' => $balitaData->bb_lahir,
+            'tb_lahir' => $balitaData->tb_lahir,
+            'usia_saat_ini' => $balitaData->pemeriksaan->last()->usia,
+            'bb_saat_ini' => $balitaData->pemeriksaan->last()->berat_badan,
+            'tb_saat_ini' => $balitaData->pemeriksaan->last()->tinggi_badan,
+
+            'pemeriksaan' => $pemeriksaan->map(function ($pemeriksaan) {
+                return [
+                    'id' => $pemeriksaan->id,
+                    'tanggal_pemeriksaan' => $pemeriksaan->updated_at,
+                    'berat_badan' => $pemeriksaan->berat_badan,
+                    'tinggi_badan' => $pemeriksaan->tinggi_badan,
+                    'status' => $pemeriksaan->status,
+                ];
+            }),
+        ];
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil mengambil data balita',
+            'data' => $formattedDataBalita
+        ]);
+    }
 }

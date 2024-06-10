@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Balita;
 use App\Models\Bidan;
 use App\Models\Posyandu;
 use Illuminate\Http\Request;
@@ -86,6 +87,48 @@ class PosyanduController extends Controller
                 'success' => false,
                 'message' => 'Unauthorized',
             ], 403);
+        }
+    }
+
+    public function getListBalitaInPosyandu(Request $request, $posyandu_id)
+    {
+        $user = auth()->user();
+
+        // Periksa apakah user yang login adalah bidan
+        if ($user->roles !== 'nakes') {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unauthorized',
+            ], 403);
+        } else {
+            $posyandu = Posyandu::with('balita')->find($posyandu_id);
+            if (!$posyandu) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Posyandu tidak ditemukan',
+                ], 404);
+            } else {
+                $balitas = Balita::with('posyandu')->where('posyandu_id', $posyandu_id)->get();
+
+                $formattedBalita = $balitas->map(function ($balita) {
+                    return [
+                        'id' => $balita->id,
+                        'name' => $balita->name,
+                        'tanggal_lahir' => $balita->tanggal_lahir,
+                        'jenis_kelamin' => $balita->jenis_kelamin,
+                        'bb_lahir' => $balita->bb_lahir,
+                        'tb_lahir' => $balita->tb_lahir,
+                        'orang_tua_id' => $balita->orang_tua_id,
+                        'posyandu_id' => $balita->posyandu_id,
+                    ];
+                });
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Berhasil mengambil data',
+                    'data' => $formattedBalita,
+                ]);
+            }
         }
     }
 }
