@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('pemeriksaans', function (Blueprint $table) {
             $table->id();
             $table->integer('usia');
-            $table->float('berat_badan');
-            $table->float('tinggi_badan');
+            $table->decimal('berat_badan');
+            $table->decimal('tinggi_badan');
             $table->enum('status', ['belum', 'sudah'])->default('belum');
             $table->foreignId('jadwal_id')->constrained('jadwals')->onDelete('cascade');
             $table->foreignId('balita_id')->constrained('balitas')->onDelete('cascade');

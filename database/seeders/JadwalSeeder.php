@@ -26,7 +26,7 @@ class JadwalSeeder extends Seeder
         foreach ($posyandus as $posyandu) {
             for ($date = $startDate; $date->lessThanOrEqualTo($endDate); $date->addMonth()) {
                 $jadwal = Jadwal::create([
-                    'posyandu_id' => $posyandu->id,
+                    'posyandu_id' => $posyandus->random()->id,
                     'tanggal' => $date->format('Y-m-d'),
                 ]);
 
@@ -35,8 +35,8 @@ class JadwalSeeder extends Seeder
                 foreach ($balitas as $balita) {
                     Pemeriksaan::create([
                         'usia' => $date->diffInMonths($balita->tanggal_lahir),
-                        'berat_badan' => 0,
-                        'tinggi_badan' => 0,
+                        'berat_badan' => 0.0,
+                        'tinggi_badan' => 0.0,
                         'status' => 'belum',
                         'jadwal_id' => $jadwal->id,
                         'balita_id' => $balita->id,

@@ -28,8 +28,9 @@ class DatabaseSeeder extends Seeder
             BidanSeeder::class,
             OrangTuaSeeder::class,
             PosyanduSeeder::class,
+            PosyanduBidanSeeder::class,
             BalitaSeeder::class,
-            // JadwalSeeder::class,
+            JadwalSeeder::class,
             VariabelSeeder::class,
             KeanggotaanSeeder::class,
         ]);

@@ -81,8 +81,8 @@ class JadwalController extends Controller
         foreach ($balitas as $balita) {
             Pemeriksaan::create([
                 'usia' => Carbon::parse($tanggal)->diffInMonths($balita->tanggal_lahir),
-                'berat_badan' => 0,
-                'tinggi_badan' => 0,
+                'berat_badan' => 0.0,
+                'tinggi_badan' => 0.0,
                 'status' => 'belum',
                 'jadwal_id' => $jadwal->id,
                 'balita_id' => $balita->id,

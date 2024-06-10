@@ -7,6 +7,7 @@ use App\Models\Jadwal;
 use App\Models\Pemeriksaan;
 use App\Models\Posyandu;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\Double;
 
 class JadwalController extends Controller
 {
@@ -202,8 +203,8 @@ class JadwalController extends Controller
                     'tanggal_lahir' => $pemeriksaan->balita->tanggal_lahir,
                     'jenis_kelamin' => $pemeriksaan->balita->jenis_kelamin,
                     'usia' => $pemeriksaan->usia,
-                    'berat_badan' => $pemeriksaan->berat_badan,
-                    'tinggi_badan' => $pemeriksaan->tinggi_badan,
+                    'berat_badan' => strval($pemeriksaan->berat_badan),
+                    'tinggi_badan' => strval($pemeriksaan->tinggi_badan),
                     'status' => $pemeriksaan->status,
                     // 'orang_tua_id' => $pemeriksaan->balita->orang_tua_id,
                     // 'posyandu_id' => $pemeriksaan->balita->posyandu_id,
