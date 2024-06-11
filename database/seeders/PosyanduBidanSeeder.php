@@ -36,7 +36,7 @@ class PosyanduBidanSeeder extends Seeder
             ],
             [
                 'posyandu_id' => 3,
-                'bidan_id' => 5,
+                'bidan_id' => 1,
             ],
             [
                 'posyandu_id' => 4,
