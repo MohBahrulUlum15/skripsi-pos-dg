@@ -116,8 +116,8 @@ class PosyanduController extends Controller
                         'name' => $balita->name,
                         'tanggal_lahir' => $balita->tanggal_lahir,
                         'jenis_kelamin' => $balita->jenis_kelamin,
-                        'bb_lahir' => $balita->bb_lahir,
-                        'tb_lahir' => $balita->tb_lahir,
+                        'bb_lahir' => strval($balita->bb_lahir),
+                        'tb_lahir' => strval($balita->tb_lahir),
                         'orang_tua_id' => $balita->orang_tua_id,
                         'posyandu_id' => $balita->posyandu_id,
                     ];
