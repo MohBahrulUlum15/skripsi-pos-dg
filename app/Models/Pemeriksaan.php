@@ -20,11 +20,18 @@ class Pemeriksaan extends Model
         'balita_id',
     ];
 
-    public function jadwal(): BelongsTo {
+    public function jadwal(): BelongsTo
+    {
         return $this->belongsTo(Jadwal::class);
     }
 
-    public function balita(): BelongsTo {
+    public function balita(): BelongsTo
+    {
         return $this->belongsTo(Balita::class);
+    }
+
+    public function hasilFuzzy(): BelongsTo
+    {
+        return $this->belongsTo(HasilFuzzy::class);
     }
 }
