@@ -66,13 +66,13 @@ class PemeriksaanController extends Controller
                 'pemeriksaan_id' => $request->id,
                 'status_gizi_bb_u' => $request->status_gizi_bb_u,
                 'deff_val_bb_u' => $request->deff_val_bb_u,
-                'status_degree_bb_u' => $request->status_degree_bb_u,
+                'val_degree_bb_u' => $request->val_degree_bb_u,
                 'status_gizi_tb_u' => $request->status_gizi_tb_u,
                 'deff_val_tb_u' => $request->deff_val_tb_u,
-                'status_degree_tb_u' => $request->status_degree_tb_u,
+                'val_degree_tb_u' => $request->val_degree_tb_u,
                 'status_gizi_bb_tb' => $request->status_gizi_bb_tb,
                 'deff_val_bb_tb' => $request->deff_val_bb_tb,
-                'status_degree_bb_tb' => $request->status_degree_bb_tb,
+                'val_degree_bb_tb' => $request->val_degree_bb_tb,
             ]);
 
             return response()->json([
