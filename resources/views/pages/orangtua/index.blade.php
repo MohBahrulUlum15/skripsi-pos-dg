@@ -68,18 +68,18 @@
                                         </tr>
                                         @foreach ($orangtuas as $orangtua)
                                             <tr>
-                                                <th scope="row">{{ $count++ }}</th>
+                                                <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>
-                                                    {{ $orangtua->user->name }}
+                                                    {{ $orangtua->name }}
                                                 </td>
                                                 {{-- <td>
                                                     {{ $orangtua->nik }}
                                                 </td> --}}
                                                 <td>
-                                                    {{ $orangtua->user->email }}
+                                                    {{ $orangtua->nik }}
                                                 </td>
                                                 <td>
-                                                    {{ $orangtua->user->phone }}
+                                                    {{ $orangtua->phone }}
                                                 </td>
                                                 <td>
                                                     {{ $orangtua->alamat }}

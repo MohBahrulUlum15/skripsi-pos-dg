@@ -67,12 +67,13 @@ class BidanController extends Controller
             'name' => $request->name,
             'email' => $email,
             'password' => Hash::make('password'),
-            'phone' => $request->phone,
             'roles' => 'nakes',
         ]);
 
         $bidan = Bidan::create([
             'user_id' => $createUserForBidan->id,
+            'name' => $request->name,
+            'phone' => $request->phone,
             'nip' => $request->nip,
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat' => $request->alamat

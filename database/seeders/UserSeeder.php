@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'name' => 'Administrator',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089xxxxxxxxx',
+                // 'phone' => '089xxxxxxxxx',
                 'roles' => 'admin'
             ],
 
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'name' => 'Siti Aisyah',
                 'email' => 'siti.aisyah@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089111111111',
+                // 'phone' => '089111111111',
                 'roles' => 'nakes'
             ],
             [
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'name' => 'Rina Mulyani',
                 'email' => 'rina.mulyani@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089222222222',
+                // 'phone' => '089222222222',
                 'roles' => 'nakes'
             ],
             [
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
                 'name' => 'Dewi Sartika',
                 'email' => 'dewi.sartika@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089333333333',
+                // 'phone' => '089333333333',
                 'roles' => 'nakes'
             ],
             [
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
                 'name' => 'Yulia Dewi',
                 'email' => 'yulia.dewi@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089444444444',
+                // 'phone' => '089444444444',
                 'roles' => 'nakes'
             ],
             [
@@ -63,7 +63,7 @@ class UserSeeder extends Seeder
                 'name' => 'Maya Putri',
                 'email' => 'maya.putri@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089555555555',
+                // 'phone' => '089555555555',
                 'roles' => 'nakes'
             ],
             [
@@ -71,7 +71,7 @@ class UserSeeder extends Seeder
                 'name' => 'Rita Anjani',
                 'email' => 'rita.anjani@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089666666666',
+                // 'phone' => '089666666666',
                 'roles' => 'nakes'
             ],
             [
@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
                 'name' => 'Ayu Lestari',
                 'email' => 'ayu.lestari@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089777777777',
+                // 'phone' => '089777777777',
                 'roles' => 'nakes'
             ],
             [
@@ -87,7 +87,7 @@ class UserSeeder extends Seeder
                 'name' => 'Dian Fitri',
                 'email' => 'dian.fitri@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089888888888',
+                // 'phone' => '089888888888',
                 'roles' => 'nakes'
             ],
             [
@@ -95,7 +95,7 @@ class UserSeeder extends Seeder
                 'name' => 'Fitria Hasanah',
                 'email' => 'fitria.hasanah@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089999999999',
+                // 'phone' => '089999999999',
                 'roles' => 'nakes'
             ],
             [
@@ -103,7 +103,7 @@ class UserSeeder extends Seeder
                 'name' => 'Lina Kurniawati',
                 'email' => 'lina.kurniawati@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089101010101',
+                // 'phone' => '089101010101',
                 'roles' => 'nakes'
             ],
 
@@ -113,7 +113,7 @@ class UserSeeder extends Seeder
                 'name' => 'Halima',
                 'email' => 'halima@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089xxxxxxx1',
+                // 'phone' => '089xxxxxxx1',
                 'roles' => 'user'
             ],
         ]);
@@ -123,10 +123,10 @@ class UserSeeder extends Seeder
         for ($i = 13; $i <= 41; $i++) {
             $users[] = [
                 'id' => $i,
-                'name' => 'User ' . $i,
-                'email' => 'user' . $i . '@gmail.com',
+                'name' => 'Orang Tua ' . $i,
+                'email' => 'orangtua' . $i . '@gmail.com',
                 'password' => Hash::make('password'),
-                'phone' => '089' . str_pad($i, 9, '0', STR_PAD_LEFT),
+                // 'phone' => '089' . str_pad($i, 9, '0', STR_PAD_LEFT),
                 'roles' => 'user'
             ];
         }

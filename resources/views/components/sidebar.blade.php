@@ -36,25 +36,17 @@
                         <a class="nav-link" href="{{ route('posyandu.index') }}">Posyandu</a>
                     </li>
                     <li>
+                        {{-- <a class="nav-link" href="#">Jadwal Pemeriksaan</a> --}}
+                        <a class="nav-link" href="{{ route('balita.index') }}">Balita</a>
+                    </li>
+                    <li>
                         <a class="nav-link" href={{ route('jadwal.index') }}>Jadwal Pemeriksaan</a>
                         {{-- <a class="nav-link" href="{{ route('orangtua.index') }}">Orang Tua</a> --}}
                     </li>
                 </ul>
             </li>
-            <li class="menu-header">Fuzzy</li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-file-alt"></i><span>Fuzzy</span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        {{-- <a class="nav-link" href="#">Variabel</a> --}}
-                        <a class="nav-link" href="{{ route('variabel.index') }}">Variabel</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#">Aturan</a>
-                        {{-- <a class="nav-link" href="{{ route('aturan.index') }}">Variabel</a> --}}
-                    </li>
-                </ul>
-            </li>
+        </ul>
+        </li>
         </ul>
     </aside>
 </div>

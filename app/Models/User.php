@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone',
+        // 'phone',
         'roles',
     ];
 
@@ -46,11 +47,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function bidan(): HasOne{
-        return $this->hasOne(Bidan::class);
+    public function bidan(): BelongsTo
+    {
+        return $this->belongsTo(Bidan::class);
     }
 
-    public function orangtua(): HasOne{
-        return $this->hasOne(OrangTua::class);
+    public function orangtua(): BelongsTo
+    {
+        return $this->belongsTo(OrangTua::class);
     }
 }

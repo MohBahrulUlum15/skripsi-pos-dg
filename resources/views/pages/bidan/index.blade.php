@@ -69,7 +69,7 @@
                                         </tr>
                                         @foreach ($bidans as $bidan)
                                             <tr>
-                                                <th scope="row">{{ $count++ }}</th>
+                                                <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>
                                                     {{ $bidan->user->name }}
                                                 </td>
@@ -80,7 +80,7 @@
                                                     {{ $bidan->user->email }}
                                                 </td> --}}
                                                 <td>
-                                                    {{ $bidan->user->phone }}
+                                                    {{ $bidan->phone }}
                                                 </td>
                                                 <td>
                                                     {{ $bidan->alamat }}

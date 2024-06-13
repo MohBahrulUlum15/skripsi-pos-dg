@@ -59,9 +59,12 @@ class PosyanduController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Posyandu $posyandu)
+    public function show($id)
     {
-        //
+        $count = 1;
+        $posyandu = Posyandu::findOrFail($id);
+        $balitas = $posyandu->balita()->paginate(10);
+        return view('pages.posyandu.show', compact('count', 'posyandu', 'balitas'));
     }
 
     /**
@@ -91,7 +94,7 @@ class PosyanduController extends Controller
 
         $posyandu->update([
             'name' => $validatedData['name'],
-            'alamat' =>$validatedData['alamat'],
+            'alamat' => $validatedData['alamat'],
         ]);
 
         $posyandu->bidans()->sync($validatedData['bidan_id']);

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('orang_tuas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('name');
+            $table->string('phone')->nullable(true);
             $table->string('nik')->nullable(false);
             $table->date('tanggal_lahir');
             $table->text('alamat');

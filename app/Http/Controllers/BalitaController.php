@@ -12,9 +12,23 @@ class BalitaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // please create variabel balitasData to view all data balita with relation to orangtua and posyandu and get orang tua name from relation orangtua to user
+
+        $balitas = Balita::with(['orangtua', 'posyandu'])
+            ->when($request->input('name'), function ($query, $name) {
+                return $query->where('name', 'like', '%' . $name . '%');
+            })
+            ->paginate(10);
+
+        // Debugging output
+        // foreach ($balitas as $balita) {
+        //     echo $balita->name . ' - ';
+        //     echo optional($balita->orangtua)->user ? $balita->orangtua->user->name : 'Tidak ada orang tua';
+        //     echo '<br>';
+        // }
+        return view('pages.balita.index', compact('balitas'));
     }
 
     /**

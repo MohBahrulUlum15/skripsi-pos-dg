@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\BidanController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\OrangTuaController;
 use App\Http\Controllers\PosyanduController;
@@ -24,9 +25,11 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('home', function () {
-        return view('dashboard');
-    })->name('home');
+    // Route::get('home', function () {
+    //     return view('dashboard');
+    // })->name('home');
+
+    Route::get('home', [DashboardController::class, 'index'])->name('home');
 
     Route::resource('bidan', BidanController::class);
 

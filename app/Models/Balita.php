@@ -23,7 +23,7 @@ class Balita extends Model
 
     public function orangtua(): BelongsTo
     {
-        return $this->belongsTo(OrangTua::class);
+        return $this->belongsTo(OrangTua::class, 'orang_tua_id');
     }
 
     public function posyandu(): BelongsTo

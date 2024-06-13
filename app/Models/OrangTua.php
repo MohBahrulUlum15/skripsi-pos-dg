@@ -13,16 +13,20 @@ class OrangTua extends Model
 
     protected $fillable = [
         'user_id',
+        'name',
         'nik',
         'tanggal_lahir',
         'alamat',
+        'phone',
     ];
 
-    public function user() : BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function balita(): HasMany {
-        return $this->hasMany(Balita::class);
+    public function balita(): HasMany
+    {
+        return $this->hasMany(Balita::class, 'orang_tua_id');
     }
 }

@@ -13,16 +13,20 @@ class Bidan extends Model
 
     protected $fillable = [
         'user_id',
+        'name',
         'nip',
         'tanggal_lahir',
         'alamat',
+        'phone',
     ];
 
-    public function user() : BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function posyandus(): BelongsToMany{
+    public function posyandus(): BelongsToMany
+    {
         return $this->belongsToMany(Posyandu::class, 'posyandu_bidan');
     }
 }
