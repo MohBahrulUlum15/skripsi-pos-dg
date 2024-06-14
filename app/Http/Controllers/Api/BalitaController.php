@@ -14,7 +14,7 @@ class BalitaController extends Controller
     public function index(Request $request)
     {
         // Mendapatkan user yang sedang login
-        $user = $request->user();
+        $user = auth()->user();
 
         // Periksa apakah user yang login adalah admin atau bidan
         if ($user->roles === 'admin' | $user->roles === 'nakes') {

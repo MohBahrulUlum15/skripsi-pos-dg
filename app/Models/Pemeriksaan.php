@@ -22,12 +22,12 @@ class Pemeriksaan extends Model
 
     public function jadwal(): BelongsTo
     {
-        return $this->belongsTo(Jadwal::class);
+        return $this->belongsTo(Jadwal::class, 'jadwal_id', 'id');
     }
 
     public function balita(): BelongsTo
     {
-        return $this->belongsTo(Balita::class);
+        return $this->belongsTo(Balita::class, 'balita_id', 'id');
     }
 
     public function hasilFuzzy(): BelongsTo

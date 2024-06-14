@@ -17,15 +17,18 @@ class Posyandu extends Model
         'bidan_id'
     ];
 
-    public function balita(): HasMany{
+    public function balita(): HasMany
+    {
         return $this->hasMany(Balita::class);
     }
 
-    public function bidans(): BelongsToMany{
+    public function bidans(): BelongsToMany
+    {
         return $this->belongsToMany(Bidan::class, 'posyandu_bidan');
     }
 
-    public function jadwal(): HasMany{
+    public function jadwal(): HasMany
+    {
         return $this->hasMany(Jadwal::class);
     }
 }

@@ -119,18 +119,18 @@ class UserSeeder extends Seeder
         ]);
 
         // Generate 29 additional user data
-        $users = [];
-        for ($i = 13; $i <= 41; $i++) {
-            $users[] = [
-                'id' => $i,
-                'name' => 'Orang Tua ' . $i,
-                'email' => 'orangtua' . $i . '@gmail.com',
-                'password' => Hash::make('password'),
-                // 'phone' => '089' . str_pad($i, 9, '0', STR_PAD_LEFT),
-                'roles' => 'user'
-            ];
-        }
+        // $users = [];
+        // for ($i = 13; $i <= 41; $i++) {
+        //     $users[] = [
+        //         'id' => $i,
+        //         'name' => 'Orang Tua ' . $i,
+        //         'email' => 'orangtua' . $i . '@gmail.com',
+        //         'password' => Hash::make('password'),
+        //         // 'phone' => '089' . str_pad($i, 9, '0', STR_PAD_LEFT),
+        //         'roles' => 'user'
+        //     ];
+        // }
 
-        DB::table('users')->insert($users);
+        // DB::table('users')->insert($users);
     }
 }

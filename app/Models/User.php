@@ -47,13 +47,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function bidan(): BelongsTo
+    public function bidan(): HasOne
     {
-        return $this->belongsTo(Bidan::class);
+        return $this->hasOne(Bidan::class);
     }
 
-    public function orangtua(): BelongsTo
+    public function orangtua(): HasOne
     {
-        return $this->belongsTo(OrangTua::class);
+        return $this->hasOne(OrangTua::class);
     }
 }

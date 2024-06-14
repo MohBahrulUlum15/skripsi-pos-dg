@@ -18,10 +18,11 @@ class Jadwal extends Model
 
     public function posyandu(): BelongsTo
     {
-        return $this->belongsTo(Posyandu::class);
+        return $this->belongsTo(Posyandu::class, 'posyandu_id', 'id');
     }
 
-    public function pemeriksaan(): HasMany{
+    public function pemeriksaan(): HasMany
+    {
         return $this->hasMany(Pemeriksaan::class);
     }
 }

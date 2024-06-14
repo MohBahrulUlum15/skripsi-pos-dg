@@ -42,92 +42,59 @@
                                 <div class="float-left">
                                     <h5 class="text-primary">Data Pemeriksaan Balita : {{ $balita->name }}</h5>
                                 </div>
-                                <div class="float-right">
-                                    {{-- <form method="GET" action="{{ route('balita.index') }}">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Cari" name="name">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </form> --}}
 
-                                    {{-- <div class="section-header-button">
-                                        <a href="{{ route('catatan-kelahiran.create', $balita->id) }}"
-                                            class="btn btn-primary">Tambah
-                                            Balita</a>
-                                    </div> --}}
-                                </div>
-                            </div>
+                                <div class="clearfix mb-3"></div>
 
-                            <div class="clearfix mb-0"></div>
-
-                            <div class="table-responsive">
-                                <table class="table-striped table">
-                                    <tr>
-                                        <th class="text-center">
-                                            #
-                                        </th>
-                                        <th>Usia</th>
-                                        <th>Berat Badan</th>
-                                        <th>Tinggi Badan</th>
-                                        <th>BB/U</th>
-                                        <th>TB/U</th>
-                                        <th>BB/TB</th>
-                                    </tr>
-                                    @foreach ($pemeriksaans as $pemeriksaan)
+                                <div class="table-responsive">
+                                    <table class="table-striped table">
                                         <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>
-                                                {{ $pemeriksaan->usia }}
-                                            </td>
-                                            <td>
-                                                {{ $pemeriksaan->berat_badan }}
-                                            </td>
-                                            <td>
-                                                {{ $pemeriksaan->tinggi_badan }}
-                                            </td>
-                                            <td>
-                                                {{ $pemeriksaan->hasilFuzzy->status_gizi_bb_tb ?? '-' }}
-                                                ({{ $pemeriksaan->hasilFuzzy->deff_val_bb_u ?? '-' }})
-                                            </td>
-                                            <td>
-                                                {{ $pemeriksaan->hasilFuzzy->status_gizi_tb_u ?? '-' }}
-                                                ({{ $pemeriksaan->hasilFuzzy->deff_val_tb_u ?? '-' }})
-                                            </td>
-                                            <td>
-                                                {{ $pemeriksaan->hasilFuzzy->status_gizi_bb_tb ?? '-' }}
-                                                ({{ $pemeriksaan->hasilFuzzy->deff_val_bb_tb ?? '-' }})
-                                            </td>
-                                            {{-- <td>
-                                                {{ $balita->bt_p }}
-                                            </td>
-                                            <td>
-                                                {{ $balita->ba_p }}
-                                            </td> --}}
-                                            <td>
-                                                {{-- <div class="d-flex justify-content">
-                                                    <a href='{{ route('balita.edit', $balita->id) }}'
-                                                        class="btn btn-sm btn-info btn-icon">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-
-                                                    <form action="{{ route('balita.destroy', $balita->id) }}"
-                                                        method="POST" class="ml-2">
-                                                        <input type="hidden" name="_method" value="DELETE" />
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete"
-                                                            onclick="return confirm('Hapus data?')">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div> --}}
-                                            </td>
+                                            <th class="text-center">
+                                                #
+                                            </th>
+                                            <th>Usia</th>
+                                            <th>Berat Badan</th>
+                                            <th>Tinggi Badan</th>
+                                            <th>BB/U</th>
+                                            <th>TB/U</th>
+                                            <th>BB/TB</th>
+                                            <th>Status Periksa</th>
                                         </tr>
-                                    @endforeach
+                                        @foreach ($pemeriksaans as $pemeriksaan)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>
+                                                    {{ $pemeriksaan->usia }}
+                                                </td>
+                                                <td>
+                                                    {{ $pemeriksaan->berat_badan }}
+                                                </td>
+                                                <td>
+                                                    {{ $pemeriksaan->tinggi_badan }}
+                                                </td>
+                                                <td>
+                                                    {{ $pemeriksaan->hasilFuzzy->status_gizi_bb_tb ?? '-' }}
+                                                    ({{ $pemeriksaan->hasilFuzzy->deff_val_bb_u ?? '-' }})
+                                                </td>
+                                                <td>
+                                                    {{ $pemeriksaan->hasilFuzzy->status_gizi_tb_u ?? '-' }}
+                                                    ({{ $pemeriksaan->hasilFuzzy->deff_val_tb_u ?? '-' }})
+                                                </td>
+                                                <td>
+                                                    {{ $pemeriksaan->hasilFuzzy->status_gizi_bb_tb ?? '-' }}
+                                                    ({{ $pemeriksaan->hasilFuzzy->deff_val_bb_tb ?? '-' }})
+                                                </td>
+                                                <td>
+                                                    @if ($pemeriksaan->status == 'belum')
+                                                        <span class="badge badge-sm badge-warning">Belum</span>
+                                                    @else
+                                                        <span class="badge badge-sm badge-success">Sudah</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-
-                                </table>
+                                    </table>
+                                </div>
                             </div>
 
                             <div class="float-right">

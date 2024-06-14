@@ -23,12 +23,12 @@ class Balita extends Model
 
     public function orangtua(): BelongsTo
     {
-        return $this->belongsTo(OrangTua::class, 'orang_tua_id');
+        return $this->belongsTo(OrangTua::class, 'orang_tua_id', 'id');
     }
 
     public function posyandu(): BelongsTo
     {
-        return $this->belongsTo(Posyandu::class);
+        return $this->belongsTo(Posyandu::class, 'posyandu_id', 'id');
     }
 
     public function pemeriksaan(): HasMany
