@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Detail Orang Tua')
+@section('title', 'Detail Balita')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,15 +11,15 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Detail Orang Tua</h1>
+                <h1>Detail Balita</h1>
                 {{-- <div class="section-header-button">
-                    <a href="{{ route('orangtua.create') }}" class="btn btn-primary">Add New</a>
+                    <a href="{{ route('balita.create') }}" class="btn btn-primary">Add New</a>
                 </div> --}}
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Orang Tua</a></div>
-                    <div class="breadcrumb-item"><a href="#">Data Orang Tua</a></div>
-                    <div class="breadcrumb-item">Detail Orang Tua</div>
+                    <div class="breadcrumb-item"><a href="#">Balita</a></div>
+                    <div class="breadcrumb-item"><a href="#">Data Balita</a></div>
+                    <div class="breadcrumb-item">Detail Balita</div>
                 </div>
             </div>
 
@@ -40,10 +40,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="float-left">
-                                    <h5 class="text-primary">Data Balita | Orang Tua: {{ $orangtua->user->name }}</h5>
+                                    <h5 class="text-primary">Data Pemeriksaan Balita : {{ $balita->name }}</h5>
                                 </div>
                                 <div class="float-right">
-                                    {{-- <form method="GET" action="{{ route('orangtua.index') }}">
+                                    {{-- <form method="GET" action="{{ route('balita.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Cari" name="name">
                                             <div class="input-group-append">
@@ -52,11 +52,11 @@
                                         </div>
                                     </form> --}}
 
-                                    <div class="section-header-button">
-                                        <a href="{{ route('catatan-kelahiran.create', $orangtua->id) }}"
+                                    {{-- <div class="section-header-button">
+                                        <a href="{{ route('catatan-kelahiran.create', $balita->id) }}"
                                             class="btn btn-primary">Tambah
                                             Balita</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -68,34 +68,36 @@
                                         <th class="text-center">
                                             #
                                         </th>
-                                        <th>Nama</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>BB Lahir</th>
-                                        <th>TB Lahir</th>
-                                        <th>Nama Posyandu</th>
-                                        <th>Aksi</th>
+                                        <th>Usia</th>
+                                        <th>Berat Badan</th>
+                                        <th>Tinggi Badan</th>
+                                        <th>BB/U</th>
+                                        <th>TB/U</th>
+                                        <th>BB/TB</th>
                                     </tr>
-                                    @foreach ($balitas as $balita)
+                                    @foreach ($pemeriksaans as $pemeriksaan)
                                         <tr>
-                                            <th scope="row">{{ $count++ }}</th>
+                                            <th scope="row">{{ $loop->iteration }}</th>
                                             <td>
-                                                {{ $balita->name }}
+                                                {{ $pemeriksaan->usia }}
                                             </td>
                                             <td>
-                                                {{ $balita->tanggal_lahir }}
+                                                {{ $pemeriksaan->berat_badan }}
                                             </td>
                                             <td>
-                                                {{ $balita->jenis_kelamin }}
+                                                {{ $pemeriksaan->tinggi_badan }}
                                             </td>
                                             <td>
-                                                {{ $balita->bb_lahir }}
+                                                {{ $pemeriksaan->hasilFuzzy->status_gizi_bb_tb ?? '-' }}
+                                                ({{ $pemeriksaan->hasilFuzzy->deff_val_bb_u ?? '-' }})
                                             </td>
                                             <td>
-                                                {{ $balita->tb_lahir }}
+                                                {{ $pemeriksaan->hasilFuzzy->status_gizi_tb_u ?? '-' }}
+                                                ({{ $pemeriksaan->hasilFuzzy->deff_val_tb_u ?? '-' }})
                                             </td>
                                             <td>
-                                                {{ $balita->posyandu->name }}
+                                                {{ $pemeriksaan->hasilFuzzy->status_gizi_bb_tb ?? '-' }}
+                                                ({{ $pemeriksaan->hasilFuzzy->deff_val_bb_tb ?? '-' }})
                                             </td>
                                             {{-- <td>
                                                 {{ $balita->bt_p }}
@@ -104,13 +106,9 @@
                                                 {{ $balita->ba_p }}
                                             </td> --}}
                                             <td>
-                                                <div class="d-flex justify-content">
-                                                    <a href="{{ route('balita.show', $balita->id) }}"
-                                                        class="btn btn-sm btn-primary btn-icon">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
+                                                {{-- <div class="d-flex justify-content">
                                                     <a href='{{ route('balita.edit', $balita->id) }}'
-                                                        class="btn btn-sm btn-info btn-icon ml-2">
+                                                        class="btn btn-sm btn-info btn-icon">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
 
@@ -123,7 +121,7 @@
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-                                                </div>
+                                                </div> --}}
                                             </td>
                                         </tr>
                                     @endforeach

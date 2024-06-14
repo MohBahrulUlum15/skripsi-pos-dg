@@ -94,8 +94,12 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content">
+                                                        <a href="{{ route('balita.show', $balita->id) }}"
+                                                            class="btn btn-sm btn-primary btn-icon">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
                                                         <a href='{{ route('balita.edit', $balita->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon">
+                                                            class="btn btn-sm btn-info btn-icon ml-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
 

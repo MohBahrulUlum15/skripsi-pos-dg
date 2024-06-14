@@ -53,6 +53,21 @@ class PemeriksaanController extends Controller
     {
         $user = auth()->user();
 
+        $request->validate([
+            'id' => 'required|exists:pemeriksaans,id',
+            'berat_badan' => 'required|numeric',
+            'tinggi_badan' => 'required|numeric',
+            'status_gizi_bb_u' => 'required',
+            'deff_val_bb_u' => 'required',
+            'val_degree_bb_u' => 'required',
+            'status_gizi_tb_u' => 'required',
+            'deff_val_tb_u' => 'required',
+            'val_degree_tb_u' => 'required',
+            'status_gizi_bb_tb' => 'required',
+            'deff_val_bb_tb' => 'required',
+            'val_degree_bb_tb' => 'required',
+        ]);
+
         // Jika pengguna memiliki peran "nakes"
         if ($user->roles === 'nakes') {
 

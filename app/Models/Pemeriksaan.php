@@ -32,6 +32,6 @@ class Pemeriksaan extends Model
 
     public function hasilFuzzy(): BelongsTo
     {
-        return $this->belongsTo(HasilFuzzy::class);
+        return $this->belongsTo(HasilFuzzy::class, 'id', 'pemeriksaan_id');
     }
 }

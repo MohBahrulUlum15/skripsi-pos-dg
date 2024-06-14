@@ -25,6 +25,6 @@ class HasilFuzzy extends Model
 
     public function pemeriksaan(): BelongsTo
     {
-        return $this->belongsTo(Pemeriksaan::class);
+        return $this->belongsTo(Pemeriksaan::class, 'pemeriksaan_id', 'id');
     }
 }

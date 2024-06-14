@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balita;
+use App\Models\HasilFuzzy;
 use App\Models\OrangTua;
+use App\Models\Pemeriksaan;
 use App\Models\Posyandu;
 use Illuminate\Http\Request;
 
@@ -61,9 +63,16 @@ class BalitaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Balita $balita)
+    public function show($id)
     {
-        //
+        $balita = Balita::findOrFail($id);
+        $pemeriksaans = Pemeriksaan::with('hasilFuzzy')->where('balita_id', $balita->id)->get();
+        // $pemeriksaan = Pemeriksaan::with('balita', 'hasilFuzzy')->where('balita_id', $balita->id)->where()get();
+        // $pemeriksaanId = $pemeriksaan->;
+        // $hasilFuzzy = HasilFuzzy::with('pemeriksaan')->where('pemeriksaan_id', $pemeriksaanId)->get();
+        // $hasilFuzzy = HasilFuzzy::all();
+        // dd($result);
+        return view('pages.balita.show', compact('balita', 'pemeriksaans'));
     }
 
     /**
