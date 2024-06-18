@@ -77,8 +77,7 @@ class PemeriksaanController extends Controller
                 'status' => "sudah",
             ]);
 
-            HasilFuzzy::create([
-                'pemeriksaan_id' => $request->id,
+            HasilFuzzy::findOrFail($request->id)->update([
                 'status_gizi_bb_u' => $request->status_gizi_bb_u,
                 'deff_val_bb_u' => $request->deff_val_bb_u,
                 'val_degree_bb_u' => $request->val_degree_bb_u,
@@ -100,5 +99,25 @@ class PemeriksaanController extends Controller
                 'message' => 'Unauthorized',
             ], 403);
         }
+    }
+
+    public function getPemeriksaanBalita(Request $request, $balita_id)
+    {
+        // $status = $request->query('status');
+
+        $pemeriksaan = Pemeriksaan::with('hasilFuzzy')->where('balita_id', $balita_id)->where('status', 'sudah')->get();
+
+        if ($pemeriksaan->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data pemeriksaan tidak ditemukan',
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil mengambil data pemeriksaan',
+            'data' => $pemeriksaan,
+        ]);
     }
 }

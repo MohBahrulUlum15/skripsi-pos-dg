@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balita;
+use App\Models\HasilFuzzy;
 use App\Models\Jadwal;
 use App\Models\Pemeriksaan;
 use App\Models\Posyandu;
@@ -79,13 +80,25 @@ class JadwalController extends Controller
         // Buat pemeriksaan untuk setiap balita di posyandu yang sama
         $balitas = Balita::where('posyandu_id', $posyandu_id)->get();
         foreach ($balitas as $balita) {
-            Pemeriksaan::create([
+            $dataPemeriksaan = Pemeriksaan::create([
                 'usia' => Carbon::parse($tanggal)->diffInMonths($balita->tanggal_lahir),
                 'berat_badan' => 0.0,
                 'tinggi_badan' => 0.0,
                 'status' => 'belum',
                 'jadwal_id' => $jadwal->id,
                 'balita_id' => $balita->id,
+            ]);
+            HasilFuzzy::create([
+                'pemeriksaan_id' => $dataPemeriksaan->id,
+                'status_gizi_bb_u' => '-',
+                'deff_val_bb_u' => 0.0,
+                'val_degree_bb_u' => 0.0,
+                'status_gizi_tb_u' => '-',
+                'deff_val_tb_u' => 0.0,
+                'val_degree_tb_u' => 0.0,
+                'status_gizi_bb_tb' => '-',
+                'deff_val_bb_tb' => 0.0,
+                'val_degree_bb_tb' => 0.0,
             ]);
         }
 

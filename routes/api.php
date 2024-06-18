@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //post pemeriksaan
     Route::post('/post-pemeriksaan', [PemeriksaanController::class, 'postPemeriksaan']);
+    Route::get('/pemeriksaan/{balita_id}', [PemeriksaanController::class, 'getPemeriksaanBalita']);
 
     //get all posyandu
     Route::get('/posyandu-by-bidan', [PosyanduController::class, 'getPosyanduByBidan']);

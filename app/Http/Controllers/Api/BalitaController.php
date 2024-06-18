@@ -72,7 +72,7 @@ class BalitaController extends Controller
         $balitaData = Balita::with('orangtua', 'posyandu', 'pemeriksaan')->find($balita_id);
 
         //get all pemeriksaan data by balita_id where status = 'sudah
-        $pemeriksaan = $balitaData->pemeriksaan->where('status', 'sudah');
+        // $pemeriksaan = $balitaData->pemeriksaan->where('status', 'sudah');
 
         if (!$balitaData) {
             return response()->json([
@@ -92,13 +92,14 @@ class BalitaController extends Controller
             'bb_saat_ini' => $balitaData->pemeriksaan->last()->berat_badan,
             'tb_saat_ini' => $balitaData->pemeriksaan->last()->tinggi_badan,
 
-            'pemeriksaan' => $pemeriksaan->map(function ($pemeriksaan) {
+            'pemeriksaan' => $balitaData->pemeriksaan->map(function ($pemeriksaan) {
                 return [
                     'id' => $pemeriksaan->id,
                     'tanggal_pemeriksaan' => $pemeriksaan->updated_at,
                     'berat_badan' => $pemeriksaan->berat_badan,
                     'tinggi_badan' => $pemeriksaan->tinggi_badan,
                     'status' => $pemeriksaan->status,
+                    // 'hasil_fuzzy' => $pemeriksaan->hasilFuzzy,
                 ];
             }),
         ];
