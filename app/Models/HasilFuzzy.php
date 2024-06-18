@@ -14,13 +14,13 @@ class HasilFuzzy extends Model
         'pemeriksaan_id',
         'status_gizi_bb_u',
         'deff_val_bb_u',
-        'status_degree_bb_u',
+        'val_degree_bb_u',
         'status_gizi_tb_u',
         'deff_val_tb_u',
-        'status_degree_tb_u',
+        'val_degree_tb_u',
         'status_gizi_bb_tb',
         'deff_val_bb_tb',
-        'status_degree_bb_tb',
+        'val_degree_bb_tb',
     ];
 
     public function pemeriksaan(): BelongsTo
